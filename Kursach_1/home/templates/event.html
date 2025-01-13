@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block icon %}{% static 'image/TheatrLogo.jpg' %}{% endblock %}
+{% block title %}
+{{ event_name }}
+{% endblock %}
+{% block content %}
+    <!-- Header Section -->
+    <div id="header" class="relative">
+        <img id="event-image" src="your-image.jpg" alt="Изображение спектакля" class="w-full h-[400px] object-cover">
+        <div class="absolute bottom-0 left-0 p-6 w-full bg-gradient-to-t from-black via-transparent text-white">
+            <h1 id="event-title" class="whitespace-normal overflow-hidden break-words lg:text-6xl md:text-5xl text-3xl font-bold ">Название спектакля</h1>
+            <p id="event-author" class="lg:text-3xl md:text-3xl text-xl mt-3">Автор: Имя автора</p>
+        </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="sticky top-16 z-30 bg-white shadow-md">
+        <div class="container mx-auto flex justify-around py-4 text-center text-gray-700">
+            <a href="#about" class=" hover:text-blue-600 transition">О спектакле</a>
+            <a href="#characters" class=" hover:text-blue-600 transition">Действующие лица</a>
+            <a href="#schedule-tickets" class="hover:text-blue-600 transition">Расписание и билеты</a>
+        </div>
+    </nav>
+
+    <!-- Content Sections -->
+    <div class="container mx-auto px-6 py-12">
+        <!-- About Section -->
+        <section id="about" class="pt-28 scroll-mt-8 mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">О спектакле</h2>
+            <p id="about-text" class="text-gray-700 leading-relaxed mb-6">
+                Здесь можно рассказать о спектакле. Например, история создания, основная идея, что делает его уникальным.
+            </p>
+            <!-- Slider -->
+            <div class="relative w-full overflow-hidden">
+                <!-- Стрелки -->
+                <div class="absolute inset-y-1/2 left-0 flex items-center justify-between w-full z-10">
+                    <!-- Левая стрелка -->
+                    <button id="prev-slide" class="p-3 ml-4 bg-white rounded-full shadow text-gray-700 hover:text-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    <!-- Правая стрелка -->
+                    <button id="next-slide" class="p-3 mr-4 bg-white rounded-full shadow text-gray-700 hover:text-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+                <!-- Контейнер слайдов -->
+                <div id="slider" class="flex transition-transform duration-500 mb-4 mx-4 mt-6 slider-image">
+                    <!-- Слайды будут добавляться через JavaScript -->
+                </div>
+            </div>
+        </section>
+        
+        
+        
+                <!-- Слайдер -->
+        <div id="lightbox" class="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-75 hidden">
+            <button id="close-lightbox" class="absolute top-4 right-4 p-2 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div class="relative w-3/4">
+                <button id="prev-slide-lightbox" class="absolute top-1/2 left-0 transform -translate-y-1/2 p-3 bg-white rounded-full shadow text-gray-700 hover:text-black">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <div id="lightbox-slider" class="flex transition-transform duration-500 border rounded-lg">
+                    <!-- Изображения слайдера будут добавлены сюда -->
+                </div>
+                <button id="next-slide-lightbox" class="absolute top-1/2 right-0 transform -translate-y-1/2 p-3 bg-white rounded-full shadow text-gray-700 hover:text-black">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        
+
+        <!-- Characters Section -->
+        <section id="characters" class="pt-20 scroll-mt-15 mb-12">
+    <h2 class="text-3xl font-bold text-gray-800 mb-8">Действующие лица</h2>
+    <div id="characters-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Актеры будут добавляться через JavaScript -->
+    </div>
+</section>
+
+        <!-- Schedule and Tickets Section -->
+        <section id="schedule-tickets" class="pt-36 scroll-mt-15 mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Расписание и билеты</h2>
+            <table id="schedule-table" class="w-full border border-gray-300 text-left">
+                <thead>
+                    <tr class="bg-gray-100 lg:text-2xl text-sm text-center">
+                        <th class="px-4 py-2">Дата</th>
+                        <th class="px-4 py-2">Время</th>
+                        <th class="px-4 py-2">Свободные места</th>
+                        <th class="px-4 py-2">Билеты</th>
+                    </tr>
+                </thead>
+                <tbody class="lg:text-xl md:text-lg text-sm whitespace-normal overflow-hidden break-words text-center">
+                    <!-- Расписание будет добавляться через JavaScript -->
+                </tbody>
+            </table>
+        </section>
+    </div>
+    {% block scripts %}
+    <script src="{% static "JavaScript/event/loadEventEvent.js"%}"></script>
+    <script src="{% static "JavaScript/home/homeScripts.js" %}"></script>
+    <script src="{% static "JavaScript/event/openBigSlider.js"%}"></script>
+    {% endblock %}
+{% endblock %}
+

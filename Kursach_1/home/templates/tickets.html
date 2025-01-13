@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block icon %}{% static 'image/TheatrLogo.jpg' %}{% endblock %}
+{% block title %}Схема зрительного зала{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto px-4 py-8 mt-12">
+        <h1 class="text-3xl font-semibold text-center mb-4">Схема зрительного зала</h1>
+        <p class="text-lg text-center mb-8">Кликните на места, чтобы выбрать или снять выбор.</p>
+        <!-- Контейнер для SVG -->
+        <div class="overflow-auto">
+            <svg id="hall" class="w-full max-w-full h-auto" preserveAspectRatio="xMidYMid meet"></svg>
+        </div>
+        <div class="flex justify-center">
+            <a href="#"><button id="buttonBuy" class=" mt-6 px-6 py-3 bg-sky-500 text-white rounded-full hover:bg-sky-600 block text-center">Купить</button></a>
+        </div>
+        
+        
+    </div>
+    
+    <div id="custom-alert" class="w-1/4 px-4 py-2 text-white bg-green-500 rounded-lg hidden fixed bottom-full left-1/2 transform -translate-x-1/2 transition-all duration-500 ease-in-out z-50">
+        <span id="alert-message" class="block text-center"></span>
+    </div>
+    <script>const userId = {{ user_id }};</script>
+    <script src="{% static 'JavaScript/tikets/tikets.js' %}"></script>
+    <script src="{% static 'JavaScript/tikets/seats.js' %}"></script>
+{% endblock %}

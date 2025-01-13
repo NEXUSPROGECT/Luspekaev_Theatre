@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Регистрация" %}{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-center min-h-screen bg-gray-100 py-12">
+    <div class="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
+        <!-- Заголовок -->
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">{% trans "Подтверждение почты" %}</h2>
+        
+        <!-- Сообщение -->
+        <p class="text-center text-gray-600 mb-8">
+            {% blocktrans %}Вам нужно подтвердить указанный вами адрес электронной почты: 
+            <span class="font-medium text-gray-800">{{ email }}</span>. 
+            <br> Перейдите по предоставленной ссылке в письме, чтобы завершить процесс регистрации. 
+            Если вы не получите письмо в течение нескольких минут, свяжитесь с нами по адресу: 
+            <a href="mailto:{{ THEME_CONTACT_EMAIL }}" class="text-sky-500 hover:underline">{{ THEME_CONTACT_EMAIL }}</a>.{% endblocktrans %}
+        </p>
+        
+        <!-- Кнопка возврата -->
+        <a href="{{ success_url }}" 
+           class="block w-full px-4 py-2 text-center text-white bg-sky-500 rounded-lg hover:bg-sky-600 focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:outline-none">
+            {% trans "Вернуться на главную" %}
+        </a>
+    </div>
+</div>
+{% endblock %}

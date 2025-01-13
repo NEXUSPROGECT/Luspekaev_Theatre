@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% load account_tags %}
+{% load static %}
+{% load i18n %}
+
+
+{% block title %}{% trans "Log in" %}{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-center min-h-screen bg-gray-100 py-12">
+    <!-- Форма входа -->
+    <div class="w-full max-w-md bg-white rounded-lg shadow-md p-8">
+        <form id="form" method="POST" action="{% url "users:account_login" %}" 
+              autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+            <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">{% trans "Вход в аккаунт" %}</h1>
+            {% csrf_token %}
+            <div class="space-y-4">
+                <!-- Поля формы -->
+                {% for field in form %}
+                <div class="flex flex-col">
+                    <label for="{{ field.id_for_label }}" class="text-sm font-medium text-gray-600">
+                        {{ field.label }}
+                        {% if field.field.required %}<span class="text-red-500">*</span>{% endif %}
+                    </label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <p class="text-sm text-red-500">{{ field.errors|join:", " }}</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
+                {% endif %}
+            </div>
+            <!-- Кнопка входа -->
+            <button type="submit" 
+                    class="w-full mt-6 px-4 py-2 text-white bg-sky-500 rounded-lg hover:bg-sky-600 focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:outline-none">
+                {% trans "Войти" %}
+            </button>
+            <!-- Ссылка на восстановление пароля -->
+            <a href="{% url "users:account_password_reset" %}" 
+               class="block mt-4 text-sm text-center text-sky-500 hover:underline">
+                {% trans "Забыли пароль?" %}
+            </a>
+        </form>
+        {% if ACCOUNT_OPEN_SIGNUP %}
+        <!-- Ссылка на регистрацию -->
+        <p class="mt-6 text-center text-sm text-gray-600">
+            {% trans "Ещё нет аккаунта?" %}
+            <a href="{% urlnext 'users:account_signup' %}" class="font-medium text-sky-500 hover:underline">
+                {% trans "Создать" %}
+            </a>
+        </p>
+        {% endif %}
+    </div>
+</div>
+    
+    <script>const href = "http://localhost:8000/";
+            const message = "Вы успешно вошли в аккаунт!"</script>
+    <script src="{% static 'JavaScript/users/signupErrors.js' %}"></script>
+    
+{% endblock %}

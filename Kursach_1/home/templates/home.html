@@ -1,0 +1,81 @@
+.{% extends 'base.html' %}
+{% load static %}
+{% block icon %}{% static 'image/TheatrLogo.jpg' %}{% endblock %}
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<!-- Контейнер Слайдера с главными событиями -->    
+    <div class="relative mt-12 ">
+    <!-- Контейнер для слайдов -->
+        <div class="overflow-hidden w-full">
+            <div id="sliderEvents" class="flex transition-transform duration-500 ease-in-out h-full">
+                <!-- Слайд 1 -->
+                
+            </div>
+        </div>
+        <!-- Управляющие кнопки -->
+        <div class="absolute top-1/2 transform -translate-y-1/2 left-4">
+            <button id="prev" class="bg-gray-700 bg-opacity-50 hover:bg-gray-800 text-white rounded-full p-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+        </div>
+        <div class="absolute top-1/2 transform -translate-y-1/2 right-4">
+            <button id="next" class="bg-gray-700 bg-opacity-50 hover:bg-gray-800 text-white rounded-full p-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+    </div>
+        
+    <div class="relative w-full overflow-hidden mt-9 mb-9">
+        <div class="flex items-center justify-between top-0 w-full h-15 z-10 border-gray-800">
+            
+            <!-- Левая стрелка -->
+            <button id="prev-slide" class="ml-2 border rounded-lg border-sky-500 p-3 text-sky-500 hover:bg-sky-500 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+            <!-- Правая стрелка -->
+            <p class="whitespace-normal overflow-hidden break-words text-center font-semibold text-3xl text-sky-500 sm:text-4xl">БЛИЖАЙШИЕ СОБЫТИЯ</p>
+            <button id="next-slide" class="mr-2 border rounded-lg border-sky-500 p-3 text-sky-500 hover:bg-sky-500 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+        <!-- Контейнер слайдов -->
+        <div id="slider" class="flex transition-transform duration-500 ease-in-out z-20 mt-9">
+            <!-- Элемент слайда -->
+            <div class="flex-none w-full md:w-1/2 lg:w-1/3 px-2">
+                <div class="border-sky-500 rounded-lg p-4 text-center">
+                    <p class="text-gray-600">20 ноября<br>19:00</p>
+                    <div class="h-32 w-full bg-gray-200 mb-4 rounded-lg bg-cover bg-center" style="background-image: url('{% static "events/event3.jpg" %}');"></div>
+                    <p class="text-sm text-gray-500">Балет</p>
+                    <h3 class="text-xl font-bold">Спящая красавица</h3>
+                </div>
+            </div>
+            <!-- Дублируйте элементы для каждого слайда -->
+            <div class="flex-none w-full md:w-1/2 lg:w-1/3 px-2">
+                <div class="border rounded-lg p-4 text-center">
+                    <p class="text-gray-600">21 ноября<br>19:00</p>
+                    <div class="h-32 w-full bg-gray-200 mb-4 rounded-lg bg-cover bg-center" style="background-image: url('{% static "events/event3.jpg" %}');"></div>
+                    <p class="text-sm text-gray-500">Опера</p>
+                    <h3 class="text-xl font-bold">Король</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+{% block scripts %}
+    <script src="{% static "JavaScript/home/loadEventsHome.js" %}"></script>  
+    <script src="{% static "JavaScript/home/homeScripts.js" %}"></script>
+{% endblock %}
+    
+{% endblock %}
+

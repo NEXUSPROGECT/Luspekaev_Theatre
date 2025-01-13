@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Log out" %}{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-center min-h-screen bg-gray-100 py-12">
+    <div class="w-full max-w-md bg-white rounded-lg shadow-md p-8">
+        <!-- Форма выхода -->
+        <form method="POST" action="{% url "users:account_logout" %}">
+            <h1 class="text-2xl font-bold text-center text-gray-800 mb-4">{% trans "Выход" %}</h1>
+            {% csrf_token %}
+            <p class="text-center text-gray-600 mb-6">{% trans "Вы действительно хотите выйти?" %}</p>
+            <!-- Кнопка выхода -->
+            <button type="submit" 
+                    class="w-full px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600 focus:ring-2 focus:ring-red-400 focus:ring-offset-2 focus:outline-none">
+                {% trans "Выйти" %}
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

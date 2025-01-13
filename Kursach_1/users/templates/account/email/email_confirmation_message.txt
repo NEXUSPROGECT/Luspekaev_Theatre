@@ -1,0 +1,6 @@
+{% load i18n account_tags %}{% blocktrans with site_name=current_site.name %}Вы только что создали аккаунт на сайте {{ site_name }}.
+
+Чтобы активировать аккаунт, перейдите по ссылке {{ activate_url }}
+
+Если вы не создавали аккаунт, просто проигнорируйте это письмо.
+{% endblocktrans %}
